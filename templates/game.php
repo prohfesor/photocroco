@@ -8,8 +8,8 @@
 
 <form class="form-inline" id="form-newgame">
     <div class="control-group centered">
-        <input type="text" name="login" placeholder="Answer" class="input-xlarge">
-        <a class="btn btn-large btn-primary" href="#start"><span class="btn-label">Send</span></a>
+        <input type="text" name="login" placeholder="Answer" id="answer" class="input-xlarge">
+        <a class="btn btn-large btn-primary" href="javascript:submit_answer()"><span class="btn-label">Send</span></a>
     </div>
 </form>
 

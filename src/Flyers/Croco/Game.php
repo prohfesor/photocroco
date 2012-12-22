@@ -56,6 +56,7 @@ class Game
         if ($game['status'] == self::GAME_CLOSED) {
             $status['question'] = $game['question'];
             $status['answers'] = $game['answers'];
+            $status['winner'] = $game['winner'];
         }
         return $status;
     }
