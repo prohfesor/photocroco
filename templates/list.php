@@ -29,54 +29,28 @@
 </form>
 
 <h1>Active Games</h1>
-<div class="well clearfix">
-    <img src="http://nophoto.info/colors/48x48.jpg?nc1" class="img-rounded pull-right" width="48" height="48">
 
-    <p>By Mr. John</p>
+<?php foreach($games as $game): ?>
+    <div class="well clearfix">
+        <img src="http://nophoto.info/colors/48x48.jpg?nc1" class="img-rounded pull-right" width="48" height="48">
 
-    <p>
-        <a href="#joinform" role="button" class="btn" data-toggle="modal">Join</a>
+        <p>Now playing: <?php echo $game['users'] ?></p>
+        <p>By <?php echo $game['admin'] ?></p>
 
-    <form class="form-inline" id="form-newgame" style="display: none">
-        <div class="control-group">
-            <input type="text" name="login" placeholder="login" class="input-large">
-            <a class="btn btn-primary" href="#join">Play</a>
-        </div>
-    </form>
-    </p>
-</div>
-<div class="well clearfix">
-    <img src="http://nophoto.info/colors/48x48.jpg?nc2" class="img-rounded pull-right" width="48" height="48">
+        <p>
+            <a href="#joinform" role="button" class="btn" data-toggle="modal">Join</a>
 
-    <p>By Mr. John</p>
+        <form class="form-inline" id="form-newgame" style="display: none">
+            <div class="control-group">
+                <input type="hidden" name="id" value="<?php echo $game['id'] ?>">
+                <input type="text" name="login" placeholder="login" class="input-large">
+                <a class="btn btn-primary" href="#join">Play</a>
+            </div>
+        </form>
+        </p>
+    </div>
+<?php endforeach ?>
 
-    <p>
-        <a href="#joinform" role="button" class="btn" data-toggle="modal">Join</a>
-
-    <form class="form-inline" id="form-newgame" style="display: none">
-        <div class="control-group">
-            <input type="text" name="login" placeholder="login" class="input-large">
-            <a class="btn btn-primary" href="#join">Play</a>
-        </div>
-    </form>
-    </p>
-</div>
-<div class="well clearfix">
-    <img src="http://nophoto.info/colors/48x48.jpg?nc3" class="img-rounded pull-right" width="48" height="48">
-
-    <p>By Mr. John</p>
-
-    <p>
-        <a href="#joinform" role="button" class="btn" data-toggle="modal">Join</a>
-
-    <form class="form-inline" id="form-newgame" style="">
-        <div class="control-group">
-            <input type="text" name="login" placeholder="login" class="input-large">
-            <a class="btn btn-primary" href="#join">Play</a>
-        </div>
-    </form>
-    </p>
-</div>
 
 
 <!-- Modal -->
