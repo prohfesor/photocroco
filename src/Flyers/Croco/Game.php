@@ -75,6 +75,7 @@ class Game
             Photo::queueGrab($game['id'], $game['question']);
         }
         $this->set($gameId, $game);
+        return ($answer == $game['question']) ? 'yes' : 'no';
     }
 
     public function preloadPhoto($gameId, $question, $preload)

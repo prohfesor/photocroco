@@ -11,6 +11,8 @@
         <input type="text" name="login" placeholder="Answer" id="answer" class="input-xlarge">
         <a class="btn btn-large btn-primary" href="javascript:submit_answer()"><span class="btn-label">Send</span></a>
     </div>
+    <div id="answers">
+    </div>
 </form>
 
     <script>

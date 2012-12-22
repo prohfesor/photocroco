@@ -47,8 +47,8 @@ $app->get('/game/:id', function ($id) use ($app, $game) {
 // Answer
 $app->post('/game/:id/:login/answer/:answer', function ($id, $login, $answer) use ($app, $game) {
     try {
-        $game->submitAnswer($id, $login, $answer);
-        echo json_encode('success');
+        $result = $game->submitAnswer($id, $login, $answer);
+        echo json_encode($result);
     } catch (Exception $e) {
         echo json_encode('error');
     }

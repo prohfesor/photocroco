@@ -58,7 +58,12 @@ function submit_answer(){
         url: '/game/'+id+'/'+login+'/answer/'+answer,
         dataType: "json",
         success: function(data){
-
+            jQuery("#img-question img").attr('src', '../loading.gif');
+            if (data == 'yes') {
+                jQuery("#answers").prepend('<p class="text-success">Yeaha! you\'re right, it\'s <b>"'+answer+'"</b></p>');
+            } else {
+                jQuery("#answers").prepend('<p class="text-error">No, it\'s not <b>"'+answer+'"</b></p>');
+            }
         }
     });
 }
