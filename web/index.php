@@ -8,6 +8,11 @@ $db->connect( DB_HOST, DB_USER , DB_PASS , DB_NAME );
 
 $app = new \Slim\Slim();
 
+$app->get("/", function(){
+    global $app;
+    $app->render('list.php', array());
+});
+
 $app->get('/hello/:name', function ($name) {
     $a = new \Flyers\Croco\Game();
 });
