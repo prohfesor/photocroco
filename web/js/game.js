@@ -29,7 +29,7 @@ function listen_status(id){
             success: function(data){
                 var photo = jQuery("#img-question img").attr('src');
                 var gamePhoto = 'http://croco/photos/'+data.photo;
-                if (photo != gamePhoto) jQuery("#img-question img").attr('src', gamePhoto);
+                if (photo != gamePhoto && data.photo) jQuery("#img-question img").attr('src', gamePhoto);
                 if (data.status == 'closed') {
                     alert('Winner is '+data.winner);
                     clearInterval(listener);
@@ -42,6 +42,7 @@ function listen_status(id){
 function submit_answer(){
     var login = jQuery.cookie('login');
     var answer = jQuery("#answer").val();
+    jQuery("#answer").val('');
     jQuery.ajax({
         type: 'post',
         url: '/game/'+id+'/'+login+'/answer/'+answer,
