@@ -15,8 +15,12 @@ class Photo
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_BINARYTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
         $raw = curl_exec($ch);
         curl_close ($ch);
+        if (strlen($raw) == 0) {
+            return $this->grab($url, $name);
+        }
         if (file_exists($name)) unlink($name);
         $fp = fopen($name,'x');
         fwrite($fp, $raw);

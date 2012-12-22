@@ -56,6 +56,7 @@ class Game
         if ($game['status'] == self::GAME_CLOSED) {
             $status['question'] = $game['question'];
             $status['answers'] = $game['answers'];
+            $status['winner'] = $game['winner'];
         }
         return $status;
     }
@@ -93,5 +94,24 @@ class Game
         $name = uniqid().'.jpg';
         rename(PATH.'/data/preload/'.$preload, PATH."/web/photos/{$name}");
         return $name;
+    }
+
+    public function getActiveGames()
+    {
+        $games = glob(PATH.'/data/games/*.json');
+        $activeGames = array();
+        foreach ($games as $game) {
+            $gameId = basename($game, '.json');
+            $data = $this->get($gameId);
+            if ($data['status'] == self::GAME_ACTIVE) {
+                $activeGames[] = array(
+                    'id' => $data['id'],
+                    'admin' => $data['admin'],
+                    'users' => count($data['users']),
+                    'photo' => end($data['photos'])
+                );
+            }
+        }
+        return $activeGames;
     }
 }

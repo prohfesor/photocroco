@@ -31,7 +31,7 @@ jQuery("a[href=#joinform]").click(function(){
 
 
 function listen_status(id){
-    setInterval( function(){
+    var listener = setInterval(function(){
         jQuery.ajax({
             type: 'get',
             url: '/game/'+id+"/status/",
@@ -39,8 +39,26 @@ function listen_status(id){
             success: function(data){
                 var photo = jQuery("#img-question img").attr('src');
                 var gamePhoto = 'http://croco/photos/'+data.photo;
-                if (photo != gamePhoto) jQuery("#img-question img").attr('src', gamePhoto);
+                if (photo != gamePhoto && data.photo) jQuery("#img-question img").attr('src', gamePhoto);
+                if (data.status == 'closed') {
+                    alert('Winner is '+data.winner);
+                    clearInterval(listener);
+                }
             }
         });
     } , 3000 );
+}
+
+function submit_answer(){
+    var login = jQuery.cookie('login');
+    var answer = jQuery("#answer").val();
+    jQuery("#answer").val('');
+    jQuery.ajax({
+        type: 'post',
+        url: '/game/'+id+'/'+login+'/answer/'+answer,
+        dataType: "json",
+        success: function(data){
+
+        }
+    });
 }
