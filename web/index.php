@@ -11,8 +11,9 @@ $app = new \Slim\Slim(array(
 $game = new \Flyers\Croco\Game();
 
 // Index
-$app->get('/', function () use ($app) {
-    $app->render('list.php');
+$app->get('/', function () use ($app, $game) {
+    $games = $game->getActiveGames();
+    $app->render('list.php', array('games' => $games));
 });
 
 // Create new game
