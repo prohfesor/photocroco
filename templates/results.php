@@ -1,6 +1,6 @@
 <?php include('_header.php'); ?>
 
-<h2>Yes!!! The answer is <?php echo $game['question'] ?></h2>
+<h2>Yes!!! The answer is &quot;<?php echo $game['question'] ?>&quot;.</h2>
 
 <h3>The winner is: <?php echo $game['winner'] ?></h3>
 

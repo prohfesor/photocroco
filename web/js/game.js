@@ -72,7 +72,7 @@ function listen_status(id){
                 }
             }
         });
-    } , 3000 );
+    } , 2000 );
 }
 
 
