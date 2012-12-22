@@ -25,11 +25,13 @@ class Game
             'question' => $question,
             'status' => self::GAME_ACTIVE,
             'winner' => '',
+            'preload' => '',
             'users' => array(),
             'photos' => array(),
             'answers' => array()
         );
         $this->set($game['id'], $game);
+        Photo::queueGrab($game['id'], $question);
         return $game['id'];
     }
 
@@ -67,7 +69,29 @@ class Game
         if ($answer == $game['question']) {
             $game['status'] = self::GAME_CLOSED;
             $game['winner'] = $login;
+        } else {
+            $game['photos'][] = $this->getNextPhoto($gameId, $game['preload']);
+            Photo::queueGrab($game['id'], $game['question']);
         }
         $this->set($gameId, $game);
+    }
+
+    public function preloadPhoto($gameId, $question, $preload)
+    {
+        $game = $this->get($gameId);
+        if (empty($game['photos'])) {
+            $game['photos'][] = $this->getNextPhoto($gameId, $preload);
+            Photo::queueGrab($game['id'], $question);
+        } else {
+            $game['preload'] = $preload;
+        }
+        $this->set($gameId, $game);
+    }
+
+    public function getNextPhoto($gameId, $preload)
+    {
+        $name = uniqid().'.jpg';
+        rename(PATH.'/data/preload/'.$preload, PATH."/web/photos/{$name}");
+        return $name;
     }
 }
