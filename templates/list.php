@@ -29,27 +29,29 @@
 </form>
 
 <h1>Active Games</h1>
-<div class="well clearfix">
-    <img src="http://placehold.it/48x48" class="img-rounded pull-right" width="48"
-         height="48">
 
-    <p>By Mr. John</p>
-</div>
-<div class="well clearfix">
-    <img src="http://placehold.it/48x48" class="img-rounded pull-right" width="48"
-         height="48">
+<?php foreach($games as $game): ?>
+    <div class="well clearfix">
+        <img src="http://nophoto.info/colors/48x48.jpg?nc1" class="img-rounded pull-right" width="48" height="48">
 
-    <p>By Mr. John</p>
-</div>
-<div class="well clearfix">
-    <img src="http://placehold.it/48x48" class="img-rounded pull-right" width="48"
-         height="48">
+        <p>Now playing: <?php echo $game['users'] ?></p>
+        <p>By <?php echo $game['admin'] ?></p>
 
-    <p>By Mr. John</p>
-</div>
+        <p>
+            <a href="#joinform" role="button" class="btn" data-toggle="modal">Join</a>
+
+        <form class="form-inline" id="form-newgame" style="display: none">
+            <div class="control-group">
+                <input type="hidden" name="id" value="<?php echo $game['id'] ?>">
+                <input type="text" name="login" placeholder="login" class="input-large">
+                <a class="btn btn-primary" href="#join">Play</a>
+            </div>
+        </form>
+        </p>
+    </div>
+<?php endforeach ?>
 
 
-<a href="#myModal" role="button" class="btn" data-toggle="modal">Join</a>
 
 <!-- Modal -->
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -58,11 +60,15 @@
         <h3 id="myModalLabel">Join game!</h3>
     </div>
     <div class="modal-body">
-        <p>One fine body</p>
+        <form class="form-inline" id="form-newgame">
+            <div class="control-group centered">
+                <input type="text" name="login" placeholder="login" class="input-xlarge">
+            </div>
+        </form>
     </div>
     <div class="modal-footer">
         <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-        <button class="btn btn-primary">Play</button>
+        <a class="btn btn-primary" href="#join">Play</a>
     </div>
 </div>
 

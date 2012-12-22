@@ -1,3 +1,7 @@
+jQuery("form").submit(function(){
+   return false;
+});
+
 jQuery("a[href=#create]").click( function(){
     jQuery("#form-newgame").toggle();
     return false;
@@ -16,6 +20,12 @@ jQuery("a[href=#start]").click( function(){
             document.location = "/game/"+data.id;
         }
     });
+    return false;
+});
+
+
+jQuery("a[href=#joinform]").click(function(){
+    jQuery(this).siblings().show();
     return false;
 });
 
