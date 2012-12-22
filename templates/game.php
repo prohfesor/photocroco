@@ -16,7 +16,9 @@
     <script>
         var id = '<?php echo $id; ?>';
 
-        listen_status(id);
+        jQuery(document).ready(function(){
+            listen_status(id);
+        });
     </script>
 
 <?php include('_footer.php'); ?>
