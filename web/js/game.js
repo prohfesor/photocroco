@@ -15,10 +15,17 @@ jQuery("a[href=#start]").click( function(){
             document.location = "/game/"+data.id;
         }
     });
+    jQuery.cookie('login', login);
     return false;
 });
 
 
-function listen_status(){
-
+function listen_status(id){
+    setInterval( function(){
+        jQuery.ajax({
+            type: 'post',
+            url: '/game/'+id+"/status",
+            dataType: "json"
+        });
+    } , 3000 );
 }
