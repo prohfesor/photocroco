@@ -24,8 +24,23 @@ jQuery("a[href=#start]").click( function(){
 });
 
 
-jQuery("a[href=#joinform]").click(function(){
-    jQuery(this).siblings().show();
+function joinshow( formid ){
+    jQuery(formid).toggle();
+}
+
+
+jQuery("form.form-join").submit(function(){
+    var login = jQuery(this).find(':text[name=login]').val();
+    var id = jQuery(this).find(':hidden[name=id]').val();
+    jQuery.cookie('login', login);
+    jQuery.ajax({
+        type: "post",
+        url: "/game/"+id+"/"+login,
+        dataType: "json",
+        success: function(data){
+            document.location = "/game/"+data.id;
+        }
+    });
     return false;
 });
 
@@ -48,6 +63,7 @@ function listen_status(id){
         });
     } , 3000 );
 }
+
 
 function submit_answer(){
     var login = jQuery.cookie('login');

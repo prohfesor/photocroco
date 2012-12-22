@@ -36,41 +36,18 @@
 
         <p>Now playing: <?php echo $game['users'] ?></p>
         <p>By <?php echo $game['admin'] ?></p>
-
         <p>
-            <a href="#joinform" role="button" class="btn" data-toggle="modal">Join</a>
-
-        <form class="form-inline" id="form-newgame" style="display: none">
-            <div class="control-group">
-                <input type="hidden" name="id" value="<?php echo $game['id'] ?>">
-                <input type="text" name="login" placeholder="login" class="input-large">
-                <a class="btn btn-primary" href="#join">Play</a>
-            </div>
-        </form>
+            <a href="#joinform" role="button" class="btn" onclick="joinshow('#form-game-<?php echo $game['id'] ?>')">Join</a>
+            <form class="form-inline form-join" id="form-game-<?php echo $game['id'] ?>" style="display: none">
+                <div class="control-group">
+                    <input type="hidden" name="id" value="<?php echo $game['id'] ?>">
+                    <input type="text" name="login" placeholder="login" class="input-large">
+                    <input type="submit" class="btn btn-primary" href="#join" value="Play">
+                </div>
+            </form>
         </p>
     </div>
 <?php endforeach ?>
-
-
-
-<!-- Modal -->
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
-        <h3 id="myModalLabel">Join game!</h3>
-    </div>
-    <div class="modal-body">
-        <form class="form-inline" id="form-newgame">
-            <div class="control-group centered">
-                <input type="text" name="login" placeholder="login" class="input-xlarge">
-            </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-        <a class="btn btn-primary" href="#join">Play</a>
-    </div>
-</div>
 
 
 <?php include('_footer.php'); ?>
