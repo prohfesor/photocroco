@@ -53,7 +53,7 @@ function listen_status(id){
             dataType: "json",
             success: function(data){
                 var photo = jQuery("#img-question img").attr('src');
-                var gamePhoto = 'http://croco/photos/'+data.photo;
+                var gamePhoto = '/photos/'+data.photo;
                 if (photo != gamePhoto && data.photo) jQuery("#img-question img").attr('src', gamePhoto);
                 if (data.status == 'closed') {
                     alert('Winner is '+data.winner);
@@ -74,7 +74,12 @@ function submit_answer(){
         url: '/game/'+id+'/'+login+'/answer/'+answer,
         dataType: "json",
         success: function(data){
-
+            jQuery("#img-question img").attr('src', '../loading.gif');
+            if (data == 'yes') {
+                jQuery("#answers").prepend('<p class="text-success">Yeaha! you\'re right, it\'s <b>"'+answer+'"</b></p>');
+            } else {
+                jQuery("#answers").prepend('<p class="text-error">No, it\'s not <b>"'+answer+'"</b></p>');
+            }
         }
     });
 }

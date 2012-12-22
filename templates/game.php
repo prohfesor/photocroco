@@ -3,13 +3,15 @@
 <h1>What is it?</h1>
 
 <div id="img-question" class="well centered">
-    <img src="http://nophoto.info/nature/400x300.jpeg" align="center">
+    <img src="../loading.gif" align="center">
 </div>
 
 <form class="form-inline" id="form-newgame">
     <div class="control-group centered">
         <input type="text" name="login" placeholder="Answer" id="answer" class="input-xlarge">
         <a class="btn btn-large btn-primary" href="javascript:submit_answer()"><span class="btn-label">Send</span></a>
+    </div>
+    <div id="answers">
     </div>
 </form>
 
