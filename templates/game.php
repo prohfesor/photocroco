@@ -3,7 +3,7 @@
 <h1>What is it?</h1>
 
 <div id="img-question" class="well centered">
-    <img src="http://nophoto.info/nature/400x300.jpeg" align="center">
+    <img src="../loading.gif" align="center">
 </div>
 
 <form class="form-inline" id="form-newgame">

@@ -28,7 +28,7 @@ function listen_status(id){
             dataType: "json",
             success: function(data){
                 var photo = jQuery("#img-question img").attr('src');
-                var gamePhoto = 'http://croco/photos/'+data.photo;
+                var gamePhoto = '/photos/'+data.photo;
                 if (photo != gamePhoto && data.photo) jQuery("#img-question img").attr('src', gamePhoto);
                 if (data.status == 'closed') {
                     alert('Winner is '+data.winner);
