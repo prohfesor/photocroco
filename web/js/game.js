@@ -23,9 +23,14 @@ jQuery("a[href=#start]").click( function(){
 function listen_status(id){
     setInterval( function(){
         jQuery.ajax({
-            type: 'post',
-            url: '/game/'+id+"/status",
-            dataType: "json"
+            type: 'get',
+            url: '/game/'+id+"/status/",
+            dataType: "json",
+            success: function(data){
+                var photo = jQuery("#img-question img").attr('src');
+                var gamePhoto = 'http://croco/photos/'+data.photo;
+                if (photo != gamePhoto) jQuery("#img-question img").attr('src', gamePhoto);
+            }
         });
     } , 3000 );
 }
