@@ -24,6 +24,7 @@ class Game
             'admin' => $login,
             'question' => $question,
             'status' => self::GAME_ACTIVE,
+            'winner' => '',
             'users' => array(),
             'photos' => array(),
             'answers' => array()
@@ -55,5 +56,18 @@ class Game
             $status['answers'] = $game['answers'];
         }
         return $status;
+    }
+
+    public function submitAnswer($gameId, $login, $answer)
+    {
+        // TODO: Validate game and user
+        $time = time();
+        $game = $this->get($gameId);
+        $game['answers'][$time][$login] = $answer;
+        if ($answer == $game['question']) {
+            $game['status'] = self::GAME_CLOSED;
+            $game['winner'] = $login;
+        }
+        $this->set($gameId, $game);
     }
 }

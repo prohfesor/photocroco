@@ -33,13 +33,19 @@ $app->post('/game/:id/:login', function ($id, $login) use ($app, $game) {
 });
 
 // Get game status
-$app->get('/game/:id/status', function ($id) use ($app) {
-
+$app->get('/game/:id/status', function ($id) use ($app, $game) {
+    $status = $game->status($id);
+    echo json_encode($status);
 });
 
 // Answer
-$app->post('/game/:id/answer/:answer', function ($id, $answer) use ($app) {
-
+$app->post('/game/:id/:login/answer/:answer', function ($id, $login, $answer) use ($app, $game) {
+    try {
+        $game->submitAnswer($id, $login, $answer);
+        echo json_encode('success');
+    } catch (Exception $e) {
+        echo json_encode('error');
+    }
 });
 
 $app->run();
