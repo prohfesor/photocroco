@@ -1,0 +1,12 @@
+{
+    "name": "flyers/croco",
+    "authors": [
+        {
+            "name": "Viktor Dziuban",
+            "email": "vsybrex@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "2.*"
+    }
+}
