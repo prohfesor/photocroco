@@ -11,6 +11,9 @@ jQuery("a[href=#create]").click( function(){
 jQuery("a[href=#start]").click( function(){
     var login = jQuery('#form-newgame :text[name=login]').val();
     var question = jQuery('#form-newgame :text[name=question]').val();
+    if(isEmpty(login) || isEmpty(question)){
+        return false;
+    }
     jQuery.cookie('login', login);
     jQuery.ajax({
         type: "post",
@@ -24,6 +27,11 @@ jQuery("a[href=#start]").click( function(){
 });
 
 
+function isEmpty(str) {
+    return (!str || 0 === str.length);
+}
+
+
 function joinshow( formid ){
     jQuery(formid).toggle();
 }
@@ -32,6 +40,9 @@ function joinshow( formid ){
 jQuery("form.form-join").submit(function(){
     var login = jQuery(this).find(':text[name=login]').val();
     var id = jQuery(this).find(':hidden[name=id]').val();
+    if(isEmpty(login) || isEmpty(id)){
+        return false;
+    }
     jQuery.cookie('login', login);
     jQuery.ajax({
         type: "post",
@@ -68,6 +79,9 @@ function listen_status(id){
 function submit_answer(){
     var login = jQuery.cookie('login');
     var answer = jQuery("#answer").val();
+    if(isEmpty(login) || isEmpty(answer)){
+        return false;
+    }
     jQuery("#answer").val('');
     jQuery.ajax({
         type: 'post',

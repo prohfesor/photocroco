@@ -12,17 +12,15 @@
 
 <form class="form-vertical" id="form-newgame" style="display: none">
     <div class="control-group">
-        <label class="control-label">Username</label>
-
         <div class="controls">
-            <input type="text" name="login" class="input-large">
+            <input type="text" name="login" placeholder="username" class="input-large">
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label">Your question</label>
+        <label class="control-label">Enter a word for machine to show:</label>
 
         <div class="controls">
-            <input type="text" name="question" class="input-large">
+            <input type="text" name="question" placeholder="question" class="input-large">
         </div>
     </div>
     <a class="btn btn-large btn-primary" href="#start"><span class="btn-label">Start!</span></a>
