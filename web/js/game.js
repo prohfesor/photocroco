@@ -67,7 +67,7 @@ function listen_status(id){
                 var gamePhoto = '/photos/'+data.photo;
                 if (photo != gamePhoto && data.photo) jQuery("#img-question img").attr('src', gamePhoto);
                 if (data.status == 'closed') {
-                    alert('Winner is '+data.winner);
+                    document.location = '/game/'+id+'/results';
                     clearInterval(listener);
                 }
             }

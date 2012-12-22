@@ -28,6 +28,13 @@ $app->get('/game/:id/status/', function ($id) use ($app, $game) {
     echo json_encode($status);
 });
 
+// Get games results
+$app->get('/game/:id/results/', function ($id) use ($app, $game) {
+    $game = $game->get($id);
+    if ($game['status'] != \Flyers\Croco\Game::GAME_CLOSED) header('Location: /game/'.$id);
+    $app->render('results.php', array('game' => $game));
+});
+
 // Get/join game
 $app->post('/game/:id/:login', function ($id, $login) use ($app, $game) {
     try {
