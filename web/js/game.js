@@ -7,6 +7,7 @@ jQuery("a[href=#create]").click( function(){
 jQuery("a[href=#start]").click( function(){
     var login = jQuery('#form-newgame :text[name=login]').val();
     var question = jQuery('#form-newgame :text[name=question]').val();
+    jQuery.cookie('login', login);
     jQuery.ajax({
         type: "post",
         url: "/new/"+login+"/"+question,
@@ -15,7 +16,6 @@ jQuery("a[href=#start]").click( function(){
             document.location = "/game/"+data.id;
         }
     });
-    jQuery.cookie('login', login);
     return false;
 });
 
