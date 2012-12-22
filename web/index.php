@@ -32,6 +32,11 @@ $app->post('/game/:id/:login', function ($id, $login) use ($app, $game) {
     }
 });
 
+// Show game
+$app->get('/game/:id', function ($id) use ($app, $game) {
+    $app->render('game.php', array('id'=>$id) );
+});
+
 // Get game status
 $app->get('/game/:id/status', function ($id) use ($app, $game) {
     $status = $game->status($id);
