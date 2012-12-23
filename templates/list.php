@@ -30,7 +30,7 @@
 
 <?php foreach($games as $game): ?>
     <div class="well clearfix">
-        <img src="http://nophoto.info/colors/48x48.jpg?nc1" class="img-rounded pull-right" width="48" height="48">
+        <img src="http://nophoto.info/colors/100x100.jpg?nc<?php echo rand(1,999); ?>" class="img-rounded pull-right" width="100" height="100">
 
         <p>Now playing: <?php echo $game['users'] ?></p>
         <p>By <?php echo $game['admin'] ?></p>
